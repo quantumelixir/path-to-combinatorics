@@ -1,17 +1,149 @@
 \documentclass{book}
+
+\usepackage{enumitem}
+\usepackage{amsmath}
 \usepackage[backref,pdfpagemode=FullScreen,colorlinks=true]{hyperref}
 
 \begin{document}
 
 \title{Solutions to \\
-\emph{A Path to Combinatorics for Undergraduates~\cite{andreescu2004path}} \\
-by Titu Andreescu and Zuming Feng}
+\emph{A Path to Combinatorics for Undergraduates} \\
+by Titu Andreescu and Zuming Feng~\cite{andreescu2004path}}
 \author{\href{http://profiles.google.com/quantumelixir}{quantumelixir}}
 \maketitle
 
+\chapter*{small note}
+I am writing this solution manual mostly to motivate myself to finish
+all the problems from this book. As a useful side-effect, I also hope
+that it would be of use to people who are either stuck on a problem or
+want to check their answers against someone else's. However, I am doing
+no great good, and my selfish motives take precedence of course. I make
+no claims of correctness and shamelessly admit that there might well be
+serious mistakes in the answer or in the solution to a problem. I
+encourage you to send me corrections by sending pull-requests through
+\href{http://github.com/quantumelixir/path-to-combinatorics}{github}.
+If you are not well-versed with such marvels of the 21st century, you
+can still send me an \href{mailto:quantumelixir@gmail.com}{email}
+informing me of the error.
+
+\vspace*{\fill}
+\begin{center}
+\href{http://creativecommons.org/licenses/by-nc-sa/3.0/}{by-nc-sa 3.0}
+\end{center}
+
+\newpage
+\vspace*{\fill}
+\begin{flushright}
+\emph{If people do not believe that mathematics is simple, it is only
+because they do not realize how complicated life is.}\\
+--John von Neumann
+\end{flushright}
+
 \tableofcontents
 
+\vspace*{\fill}
+\emph{Combinatorics is an honest subject. No ad\`eles, no sigma-algebras.
+You count balls in a box, and you either have the right number or you
+haven't. You get the feeling that the result you have discovered is
+forever, because it’s concrete. Other branches of mathematics are not so
+clear-cut. Functional analysis of infinite-dimensional spaces is never
+fully convincing; you don't get a feeling of having done an honest day's
+work. Don't get the wrong idea – combinatorics is not just putting balls
+into boxes. Counting finite sets can be a highbrow undertaking, with
+sophisticated techniques.}\\
+\begin{flushright}
+--Gian-Carlo Rota
+\end{flushright}
+\vspace*{\fill}
+
 \chapter{Addition or Multiplication}
+
+\begin{enumerate}[label={1.\arabic*}]
+
+\item
+The total number of functions from $\{1, 2, \dots, 1998\} \to \{2000, 2001,
+2002, 2003\}$ is $4^{1998}$. For each such function $f$, the sum
+$f(1)+f(2)+\dots+f(1998)$ might be either odd or even. If the sum is
+even, then $f(1999)$ can be assigned to either of $\{2001, 2003\}$, and if
+odd, then $f(1999)$ can be assigned to either of $\{2000, 2002\}$. Hence,
+there are two possibilities in each case and required number of
+functions is $2\times4^{1998}=2^{3997}$
+
+\item
+Let $ab=10a+b$ be the two-digit positive number. For divisibility by
+each of it's digits, we have the divisbility conditions: $a | b$, and
+$b | 10a$. Taking $b=q_1a$ and $10a=q_2b$, we have $q_1q_2=10$. The only
+integer solutions $(q_1,q_2)$ for which are:
+$(1,10),(2,5),(5,2),(10,1)$. For each solution, applying the range
+constraints $0<a,b<10$, we get the final answer $9 + 4 + 1 + 0 = 14$
+
+\item
+We have a bijection between the number of paths from the letter C in
+the first row to each R in the last row, and the number of ways to
+form the word COMPUTER. With the row index as $n$ and the column index
+as $r$, we count the number of paths from the first row to the $(n,
+r)$-th element using the recursion ${n \choose r} = {{n-1} \choose {r-1}}
++ {{n-1} \choose r}$. Hence, coefficients in the last row are exactly the binomial
+coefficients and we have the answer ${7 \choose 0} + {7 \choose 1} + \dots +
+{7 \choose 7} = 2^7 = 128$
+
+\item
+
+\item
+The number of ways to order $n$ distinct objects around a circle is
+$(n-1)!$. Within each pair, the twins can be permuted in two ways. Thus,
+the total number of ways to arrange the twins is $(12-1)! \times 2^{12}$
+
+\item
+Separating the $10$ girls by $10$ blank placeholders, we can choose $4$
+places for the boys in $10 \choose 4$ ways. Permuting the girls and
+boys, after choosing where the boys sit, we get a total of
+${10\choose4}10!4!$ ways.
+
+\item
+Let the number of black and white marbles in the first and second box be
+$b_1, w_1$ and, $b_2, w_2$ respectively. We are given that $b_1 + w_1 +
+b_2 + w_2 = 25$. $P(\text{both marbles are black}) = \frac{b_1}{b_1+w_1}
+\times \frac{b_2}{b_2+w_2} = \frac{27}{50}$. So have the following
+condition: $(b_1+w_1)+(b_2+w_2)=25$ and $(b_1+w_1)(b_2+w_2)|50$, to
+which the only solutions $(b_1+w_1,b_2+w_2)$ are $(5,20), (10,15)$
+(discarding permutations). When $(b_1+w_1,b_2+w_2)=(5,20)$,
+$b_1b_2=54=2\cdot3^3$ and the only possible solution to the number of
+black balls in the first and second box is $(3,2\cdot3^2)$. This yields
+$\frac{w_1w_2}{(b_1+w_1)(b_2+w_2)}=\frac{(5-3)\cdot(20-2\cdot3^2)}{5\cdot20}=\frac{1}{25}$.
+When $(b_1+w_1,b_2+w_2)=(l0,15)$, $b_1b_2=81=3^4$ and the only possible
+solution to the number of black balls in the first and second box is
+$(3^2,3^2)$. This yields $\frac{w_1w_2}{(b_1+w_1)(b_2+w_2)} =
+\frac{(10-3^2)\cdot(15-3^2)}{10\cdot15} = \frac{1}{25}$. Thus, in each
+case, the answer is $\frac{1}{25}$
+
+
+\item
+
+\item
+Each element of $S=\{1, 2, \dots, 2003\}$ goes to one set from the ordered
+triple. Thus, the total number of ways of assigning all the elements
+from $S$ is $3^{2003}$.
+
+\item
+The question is equivalent to finding the number of increasing
+arithmetic progressions in the set $S=\{1, 2, \dots, 2000\}$.  Suppose
+we choose $1$ as the first term. It is clear that we can only choose the
+odd numbers $\{3, 5, \dots, 1999\}$ for the middle term to be an integer
+and lie in $S$.  There are exactly $1000$ such arithmetic progressions
+beginning with $1$.  We argue similarly when the first term is $2, 3,
+\dots, 1998$. Thus, the total number of ways to select a three term
+increasing arithmetic progression from $S$ is $\underbrace{1000}_{1} +
+\underbrace{1000}_{2} + \underbrace{999}_{3} + \underbrace{999}_{4} +
+\dots + \underbrace{2}_{1997} + \underbrace{2}_{1998} =
+2\times\left(\frac{(1000)(1001)}{2}-1\right) = 1000\times1001-2 =
+1000998$.
+
+\item
+
+\item
+\end{enumerate}
+
 \chapter{Combinations}
 \chapter{Properties of Binomial Coefficients}
 \chapter{Bijections}
@@ -23,5 +155,12 @@ by Titu Andreescu and Zuming Feng}
 
 \bibliographystyle{plain}
 \bibliography{references}
+
+\newpage
+\begin{flushright}
+\vspace*{\fill}
+\emph{God save you if you still can't count.}\\
+--Anonymous
+\end{flushright}
 
 \end{document}
